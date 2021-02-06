@@ -1,5 +1,6 @@
 <?php
 http_response_code(200);
+echo 'ss';
 die;
 // header("Content-Type: application/json");
 switch ($_GET['v']) {
