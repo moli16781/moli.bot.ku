@@ -1,8 +1,6 @@
 <?php
 // date_default_timezone_set('Asia/Bangkok');
 $content = file_get_contents('php://input');
-echo 'ssssss';
-die;
 // file_put_contents('textLine.txt', json_encode(json_decode($content, true), JSON_PRETTY_PRINT), FILE_APPEND);
 // die();
 $arrJson = json_decode($content, true);
@@ -19,6 +17,11 @@ $strUrl = $API_REPLY;
 $arrHeader = array();
 $arrHeader[] = "Content-Type: application/json";
 $arrHeader[] = "Authorization: Bearer $strAccessToken";
+
+
+$replyToken = trim($arrJson['events'][0]['replyToken']);
+reply($replyToken, $arrJson);
+die;
 if ($arrJson['events'][0]['source']['type'] == 'user') {
 
     $userID = $arrJson['events'][0]['source']['userId'];
