@@ -20,7 +20,7 @@ $arrHeader[] = "Authorization: Bearer $strAccessToken";
 
 
 $replyToken = trim($arrJson['events'][0]['replyToken']);
-reply($replyToken, $arrJson);
+reply($replyToken, 'ssss');
 die;
 if ($arrJson['events'][0]['source']['type'] == 'user') {
 
