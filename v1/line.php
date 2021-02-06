@@ -24,8 +24,35 @@ if ($arrJson['events'][0]['source']['type'] == 'user') {
     $messageText = trim($arrJson['events'][0]['message']['text']);
     $replyToken = trim($arrJson['events'][0]['replyToken']);
     reply($replyToken,$messageText);
-    die;
 
+    exit(0);
+}else if ($arrJson['events'][0]['source']['type'] == 'group') {
+    $userID = $arrJson['events'][0]['source']['userId'];
+    $groupId = $arrJson['events'][0]['source']['groupId'];
+    $messageText = trim($arrJson['events'][0]['message']['text']);
+    $replyToken = trim($arrJson['events'][0]['replyToken']);
+
+    $messages = array();
+    array_push($messages, array(
+        'type' => 'text',
+        'text' => 'ลงทะเบียนสำเร็จ'
+    ));
+   
+    $textReturn = "โปรไฟล์ \n";
+    $textReturn .= "ชื่อ " . $rowUser['name'] . " \n";
+    $textReturn .= "โควต้าสปินคงเหลือ " . number_format($rowUser['quota']) . " \n";
+    $textReturn .= "โควต้าลิงก์คงเหลือ " . number_format($rowUser['quota_link']) . " \n";
+    if ($rowUser['parent_id'] != 0) {
+        $textReturn .= "สังกัด " . $rowUser['parent_id'] . " \n";
+    }
+    $textReturn .= "\nปล. หากพบปัญหาในการใช้งานกรุณาติดต่อ 096-7567844 Peerapat Matheang ";
+    // replyText($userID, $textReturn);
+    array_push($messages, array(
+        'type' => 'text',
+        'text' => $textReturn
+    ));
+    
+    reply($replyToken,'',$messages);
 
     exit(0);
 }
