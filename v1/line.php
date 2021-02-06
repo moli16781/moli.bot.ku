@@ -1,11 +1,13 @@
 <?php
 // date_default_timezone_set('Asia/Bangkok');
 $content = file_get_contents('php://input');
-file_put_contents('textLine.txt', json_encode(json_decode($content, true), JSON_PRETTY_PRINT), FILE_APPEND);
+echo 'ssssss';
+die;
+// file_put_contents('textLine.txt', json_encode(json_decode($content, true), JSON_PRETTY_PRINT), FILE_APPEND);
 // die();
 $arrJson = json_decode($content, true);
-$LINE_ID = '1655217396';
-$LINE_SECRET = '1606d35a13d769e9182190be78eb08be';
+$LINE_ID = '1655624949';
+$LINE_SECRET = '2faf5eceb595d6265db5fdf0bfa48510';
 $line = new Line($LINE_ID, $LINE_SECRET);
 $obj = json_decode($line->getTokenForChanal());
 $strAccessToken = $obj->access_token;
