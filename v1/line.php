@@ -1,7 +1,7 @@
 <?php
 // date_default_timezone_set('Asia/Bangkok');
 $content = file_get_contents('php://input');
-// file_put_contents('textLine.txt', json_encode(json_decode($content, true), JSON_PRETTY_PRINT), FILE_APPEND);
+file_put_contents('textLine.txt', json_encode(json_decode($content, true), JSON_PRETTY_PRINT), FILE_APPEND);
 // die();
 $arrJson = json_decode($content, true);
 $LINE_ID = '1655624949';
