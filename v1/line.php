@@ -23,7 +23,7 @@ if ($arrJson['events'][0]['source']['type'] == 'user') {
     $userID = $arrJson['events'][0]['source']['userId'];
     $messageText = trim($arrJson['events'][0]['message']['text']);
     $replyToken = trim($arrJson['events'][0]['replyToken']);
-    reply($replyToken,$userID);
+    reply($replyToken,$messageText);
     die;
 
 
