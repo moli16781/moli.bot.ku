@@ -53,27 +53,7 @@ class Line
 
 		return $response;
 	}
-	public function getProfileGroup($groupID=null,$userID=null,$token=null)
-	{
-		$URL_GET_PROFILE_GROUP = 'https://api.line.me/v2/bot/group/'.$groupID.'/member/'.$userID;
-
-		$curl = curl_init();
-		curl_setopt_array($curl, array(
-		  CURLOPT_URL => $URL_GET_PROFILE_GROUP,
-		  CURLOPT_RETURNTRANSFER => true,
-		  CURLOPT_TIMEOUT => 30,
-		  CURLOPT_CUSTOMREQUEST => "GET",
-		  CURLOPT_HTTPHEADER => array(
-		    "cache-control: no-cache",
-			"Authorization: Bearer ".$token
-		  )
-		));
-
-		$response = curl_exec($curl);
-		curl_close($curl);
-
-		return $response;
-	}
+	
 }
 
 ?>
