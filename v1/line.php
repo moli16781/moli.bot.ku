@@ -19,37 +19,14 @@ $arrHeader[] = "Content-Type: application/json";
 $arrHeader[] = "Authorization: Bearer $strAccessToken";
 
 $userID = $arrJson['events'][0]['source']['userId'];
-$groupId = $arrJson['events'][0]['source']['groupId'];
-$messageText = trim($arrJson['events'][0]['message']['text']);
 $replyToken = trim($arrJson['events'][0]['replyToken']);
+$messageText = trim($arrJson['events'][0]['message']['text']);
 
 if ($arrJson['events'][0]['source']['type'] == 'user') {
-
-    $getUser = json_decode($line->getProfile($userID,$strAccessToken)); 
-    $textReturn .= "รายละเอียด \n" . $getUser->pictureUrl . "";
-  
-    $messages = array();
-    array_push($messages, array(
-        'type' => 'text',
-        'text' => $textReturn
-    ));
-
-    reply($replyToken,'',$messages);
-    
-
+    require 'user.php';
     exit(0);
 }else if ($arrJson['events'][0]['source']['type'] == 'group') {
-
-    $getUser = $line->getProfile($userID,$replyToken);       
-    $textReturn .= "รายละเอียด " . $getUser . " \n";
-    
-    $messages = array();
-    array_push($messages, array(
-        'type' => 'text',
-        'text' => $textReturn
-    ));
-    
-    reply($replyToken,'',$messages);
-
+    $groupId = $arrJson['events'][0]['source']['groupId'];
+    require 'group.php';
     exit(0);
 }
