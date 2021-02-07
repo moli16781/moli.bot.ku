@@ -21,12 +21,15 @@ $arrHeader[] = "Authorization: Bearer $strAccessToken";
 $userID = $arrJson['events'][0]['source']['userId'];
 $replyToken = trim($arrJson['events'][0]['replyToken']);
 $messageText = trim($arrJson['events'][0]['message']['text']);
+$groupId = $arrJson['events'][0]['source']['groupId'];
 
 if ($arrJson['events'][0]['source']['type'] == 'user') {
     require 'user.php';
     exit(0);
+}else if ($arrJson['events'][0]['type'] == 'memberJoined') {
+    require 'memberJoined.php';
+    exit(0);
 }else if ($arrJson['events'][0]['source']['type'] == 'group') {
-    $groupId = $arrJson['events'][0]['source']['groupId'];
     require 'group.php';
     exit(0);
 }
