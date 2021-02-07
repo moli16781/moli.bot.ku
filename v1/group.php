@@ -1,22 +1,22 @@
 <?php
-$getUser = json_decode($line->getProfileGroup($groupId,$userID,$strAccessToken));
+$getUserGroup = json_decode($line->getProfileGroup($groupId,$userID,$strAccessToken));
 
 $messages = array();
 
-$textReturn = "pictureUrl " . $groupId . " \n";
+$textReturn = "pictureUrl \n" . $groupId . " ";
 array_push($messages, array(
     'type' => 'text',
-    'text' => $textReturn
+    'text' => $getUserGroup->userId
 ));
-$textReturn = "displayName " . $userID . " \n";
+$textReturn = "displayName \n" . $userID . " ";
 array_push($messages, array(
     'type' => 'text',
-    'text' => $textReturn
+    'text' => $getUserGroup->pictureUrl
 ));
-$textReturn = "All " . $strAccessToken . " \n";
+$textReturn = "All \n" . $strAccessToken . " ";
 array_push($messages, array(
     'type' => 'text',
-    'text' => $textReturn
+    'text' => $getUserGroup->displayName
 ));
 
 
