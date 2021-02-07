@@ -1,8 +1,8 @@
 <?php
-$getUserGroup = $line->getProfileGroup($groupId,$userID,$strAccessToken);
+// $getUserGroup = json_decode($line->getProfileGroup($groupId,$userID,$strAccessToken));
 
 $messages = array();
-$textReturn = "รายละเอียด \n" . $getUserGroup . " \n";
+$textReturn = "รายละเอียด \n" . $content . " \n";
 array_push($messages, array(
     'type' => 'text',
     'text' => $textReturn
