@@ -25,7 +25,7 @@ $replyToken = trim($arrJson['events'][0]['replyToken']);
 
 if ($arrJson['events'][0]['source']['type'] == 'user') {
 
-    $getUser = $line->getProfile($userID,$replyToken); 
+    $getUser = $line->getProfile($userID,$strAccessToken); 
     $textReturn .= "รายละเอียด \n" . $obj . "";
   
     $messages = array();
