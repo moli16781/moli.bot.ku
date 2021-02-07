@@ -11,10 +11,7 @@ array_push($messages, array(
     'type' => 'text',
     'text' => $getUserGroup->pictureUrl
 ));
-array_push($messages, array(
-    'type' => 'text',
-    'text' => $getUserGroup->statusMessage
-));
+
 
 
 reply($replyToken,'',$messages);
