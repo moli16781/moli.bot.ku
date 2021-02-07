@@ -25,18 +25,25 @@ $replyToken = trim($arrJson['events'][0]['replyToken']);
 
 if ($arrJson['events'][0]['source']['type'] == 'user') {
 
-    reply($replyToken,$messageText);
+    $getUser = $line->getProfile($userID,$replyToken); 
+    $textReturn .= "รายละเอียด \n" . $getUser . "";
+  
+    $messages = array();
+    array_push($messages, array(
+        'type' => 'text',
+        'text' => $textReturn
+    ));
+
+    reply($replyToken,'',$messages);
+    
 
     exit(0);
 }else if ($arrJson['events'][0]['source']['type'] == 'group') {
 
-    $messages = array();
     $getUser = $line->getProfile($userID,$replyToken);       
-    $textReturn = "โปรไฟล์ \n";
-    $textReturn .= "ชื่อ " . $rowUser['name'] . " \n";
     $textReturn .= "รายละเอียด " . $getUser . " \n";
     
-    
+    $messages = array();
     array_push($messages, array(
         'type' => 'text',
         'text' => $textReturn
