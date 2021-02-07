@@ -29,16 +29,13 @@ if ($arrJson['events'][0]['source']['type'] == 'user') {
 
     exit(0);
 }else if ($arrJson['events'][0]['source']['type'] == 'group') {
-    
 
     $messages = array();
-    array_push($messages, array(
-        'type' => 'text',
-        'text' => 'ลงทะเบียนสำเร็จ'
-    ));
-   
+    $getUser = $line->getProfile($userID,$replyToken);       
     $textReturn = "โปรไฟล์ \n";
     $textReturn .= "ชื่อ " . $rowUser['name'] . " \n";
+    $textReturn .= "รายละเอียด " . $getUser . " \n";
+    
     
     array_push($messages, array(
         'type' => 'text',
