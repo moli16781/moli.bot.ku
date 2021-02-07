@@ -1,5 +1,5 @@
 <?php
-$getUserGroup = json_decode(getProfileGroup($groupId,$userID,$strAccessToken));
+$getUserGroup = json_decode($line->getProfileGroup($groupId,$userID,$strAccessToken));
 
 $messages = array();
 
