@@ -1,6 +1,6 @@
 <?php
 
-$getUser = $line->getProfile($userID,$replyToken);       
+$getUser = json_decode($line->getProfile($userID,$replyToken));       
     $textReturn .= "รายละเอียด " . $getUser . " \n";
     
     $messages = array();
